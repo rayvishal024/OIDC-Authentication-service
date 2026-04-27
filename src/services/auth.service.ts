@@ -3,6 +3,7 @@ import { z } from "zod";
 import { db } from "../db";
 import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
+import { signToken } from "../utils/jwt";
 
 const registerSchema = z.object({
      email: z.string().email(),
@@ -80,9 +81,10 @@ export const loginUser = async (data: unknown) => {
           throw new Error("Invalid email or password");
      }
 
-     return {
-          id: user.id,
+     const token = signToken({
+          userId: user.id,
           email: user.email,
-          name: user.name,
-     };
+     });
+
+     return { user, token };
 };

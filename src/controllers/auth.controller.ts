@@ -20,9 +20,14 @@ export const showLogin = (req : Request, res : Response) => {
 
 export const login = async (req : Request, res : Response) => {
      try {
-          const user = await authService.loginUser(req.body);
-          res.send("Login successful");
+          const { user, token } = await authService.loginUser(req.body);
+
+          res.json({
+               message: "Login successful",
+               token,
+          });
      } catch (err: any) {
           res.status(400).send(err.message);
      }
 };
+
