@@ -8,6 +8,34 @@
       "when": 1777290080960,
       "tag": "0000_zippy_george_stacy",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1777582811843,
+      "tag": "0001_thin_lethal_legion",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777584151624,
+      "tag": "0002_tough_phalanx",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1777618828527,
+      "tag": "0003_serious_leopardon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1777619123315,
+      "tag": "0004_smooth_vin_gonzales",
+      "breakpoints": true
     }
   ]
 }

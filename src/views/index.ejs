@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Identity Portal | OpenID Connect</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Lucide Icons for a professional touch -->
+     <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+     <!-- Navigation Header -->
+     <nav class="bg-white border-b border-slate-200 py-4 px-8 flex justify-between items-center shadow-sm">
+          <div class="flex items-center space-x-2">
+               <div class="bg-indigo-600 p-2 rounded-lg">
+                    <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+               </div>
+               <span class="text-xl font-bold tracking-tight text-slate-800">AuthCore <span
+                         class="text-indigo-600">OIDC</span></span>
+          </div>
+          <div class="flex items-center space-x-4">
+               <span class="text-sm text-slate-500">Status: <span
+                         class="text-green-500 font-medium">Operational</span></span>
+          </div>
+     </nav>
+
+     <main class="max-w-6xl mx-auto py-16 px-4">
+          <div class="text-center mb-12">
+               <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Identity & Access Management</h1>
+               <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                    Securely manage your user profile, register OAuth2 clients, and monitor your application
+                    integrations from one central hub.
+               </p>
+          </div>
+
+          <!-- Action Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+               <!-- Card 1: Registration -->
+               <a href="/auth/register"
+                    class="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all">
+                    <div
+                         class="bg-indigo-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
+                         <i data-lucide="user-plus"
+                              class="text-indigo-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">User Registration</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Create a new identity account to access protected
+                         resources and services.</p>
+                    <div class="mt-6 flex items-center text-indigo-600 font-semibold text-sm">
+                         Get Started <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+               </a>
+
+               <!-- Card 2: Login -->
+               <a href="/auth/login"
+                    class="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all">
+                    <div
+                         class="bg-blue-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                         <i data-lucide="log-in" class="text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Account Login</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Securely sign in to your existing account using
+                         your credentials.</p>
+                    <div class="mt-6 flex items-center text-blue-600 font-semibold text-sm">
+                         Authenticate <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+               </a>
+
+               <!-- Card 3: Client Registration -->
+               <a href="/client/register"
+                    class="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all">
+                    <div
+                         class="bg-slate-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-slate-800 transition-colors">
+                         <i data-lucide="code-2" class="text-slate-700 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Developer Portal</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Register OAuth2/OIDC clients and manage redirect
+                         URIs for your apps.</p>
+                    <div class="mt-6 flex items-center text-slate-800 font-semibold text-sm">
+                         Manage Clients <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </div>
+               </a>
+
+          </div>
+
+          <footer class="mt-20 text-center text-slate-400 text-sm">
+               <p>&copy; 2026 AuthCore Identity Provider. Built for secure-first developers.</p>
+          </footer>
+     </main>
+
+     <script>
+          // Initialize Lucide icons
+          lucide.createIcons();
+     </script>
+</body>
+
+</html>

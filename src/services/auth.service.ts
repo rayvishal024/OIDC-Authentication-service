@@ -55,7 +55,6 @@ const loginSchema = z.object({
      password: z.string().min(6),
 });
 
-
 export const loginUser = async (data: unknown) => {
 
      //  Validate input
@@ -65,8 +64,8 @@ export const loginUser = async (data: unknown) => {
      const user = await db.query.users.findFirst({
           where: eq(users.email, parsed.email),
      });
-
-     // Ivalid Email
+     
+     // Invalid Email
      if (!user) {
           throw new Error("Invalid email or password");
      }
@@ -81,6 +80,7 @@ export const loginUser = async (data: unknown) => {
           throw new Error("Invalid email or password");
      }
 
+     // sign Token
      const token = signToken({
           userId: user.id,
           email: user.email,

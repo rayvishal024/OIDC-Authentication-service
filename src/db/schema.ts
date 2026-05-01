@@ -1,9 +1,11 @@
 import {
      pgTable,
      uuid,
+     serial,
      text,
      timestamp,
      boolean,
+     integer
 } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
@@ -21,5 +23,30 @@ export const clients = pgTable("clients", {
      clientSecret: text("client_secret"),
      name: text("name").notNull(),
      redirectUris: text("redirect_uris").array().notNull(),
+     createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const authorizationCodes = pgTable("authorization_codes", {
+     id: serial("id").primaryKey(),
+
+     code: text("code").notNull(),
+     userId: uuid("user_id").notNull(),
+
+     clientId: text("client_id").notNull(),
+     redirectUri: text("redirect_uri").notNull(),
+
+     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+
+     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+});
+
+export const refreshTokens = pgTable("refresh_tokens", {
+     id: serial("id").primaryKey(),
+
+     token: text("token").notNull(),
+     userId: uuid("user_id").notNull(),
+     clientId: text("client_id").notNull(),
+
+     expiresAt: timestamp("expires_at").notNull(),
      createdAt: timestamp("created_at").defaultNow(),
 });

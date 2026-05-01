@@ -9,6 +9,7 @@ export const signToken = (payload: object) => {
      return jwt.sign(payload, privateKey, {
           algorithm: "RS256",
           expiresIn: "15m",
+          keyid: "my-key-1",
      });
 };
 
