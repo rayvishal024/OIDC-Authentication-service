@@ -4,98 +4,161 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Identity Portal | OpenID Connect</title>
-     <script src="https://cdn.tailwindcss.com"></script>
-     <!-- Lucide Icons for a professional touch -->
-     <script src="https://unpkg.com/lucide@latest"></script>
+     <title>Identity Hub | OAuth & OIDC Provider</title>
+     <style>
+          :root {
+               --primary-bg: #f3f4f6;
+               --accent-color: #4f46e5;
+               --accent-hover: #4338ca;
+               --text-dark: #111827;
+               --text-gray: #6b7280;
+               --card-bg: #ffffff;
+               --border: #e5e7eb;
+          }
+
+          body {
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+               background-color: var(--primary-bg);
+               margin: 0;
+               color: var(--text-dark);
+               line-height: 1.6;
+          }
+
+          /* Hero Section */
+          .hero {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               text-align: center;
+               padding: 80px 20px;
+               min-height: 80vh;
+          }
+
+          .badge {
+               background: rgba(79, 70, 229, 0.1);
+               color: var(--accent-color);
+               padding: 8px 16px;
+               border-radius: 20px;
+               font-size: 0.85rem;
+               font-weight: 600;
+               margin-bottom: 20px;
+          }
+
+          h1 {
+               font-size: 3rem;
+               margin: 0 0 20px 0;
+               font-weight: 800;
+               letter-spacing: -0.02em;
+          }
+
+          p.description {
+               max-width: 600px;
+               font-size: 1.125rem;
+               color: var(--text-gray);
+               margin-bottom: 40px;
+          }
+
+          /* Action Buttons */
+          .cta-group {
+               display: flex;
+               gap: 15px;
+               flex-wrap: wrap;
+               justify-content: center;
+          }
+
+          .btn {
+               padding: 12px 28px;
+               border-radius: 8px;
+               font-size: 1rem;
+               font-weight: 600;
+               text-decoration: none;
+               transition: all 0.2s;
+          }
+
+          .btn-primary {
+               background-color: var(--accent-color);
+               color: white;
+          }
+
+          .btn-primary:hover {
+               background-color: var(--accent-hover);
+          }
+
+          .btn-outline {
+               background-color: white;
+               color: var(--text-dark);
+               border: 1px solid var(--border);
+          }
+
+          .btn-outline:hover {
+               background-color: #fafafa;
+               border-color: #d1d5db;
+          }
+
+          /* Features Grid */
+          .features {
+               display: grid;
+               grid-template-columns: repeat(auto-fit, min-max(250px, 1fr));
+               gap: 20px;
+               max-width: 1000px;
+               width: 100%;
+               margin-top: 60px;
+          }
+
+          .feature-card {
+               background: var(--card-bg);
+               padding: 24px;
+               border-radius: 12px;
+               border: 1px solid var(--border);
+               text-align: left;
+          }
+
+          .feature-card h3 {
+               margin: 0 0 10px 0;
+               font-size: 1.1rem;
+          }
+
+          .feature-card p {
+               margin: 0;
+               font-size: 0.9rem;
+               color: var(--text-gray);
+          }
+     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body>
 
-     <!-- Navigation Header -->
-     <nav class="bg-white border-b border-slate-200 py-4 px-8 flex justify-between items-center shadow-sm">
-          <div class="flex items-center space-x-2">
-               <div class="bg-indigo-600 p-2 rounded-lg">
-                    <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+     <section class="hero">
+          <span class="badge">OpenID Certified</span>
+          <h1>Your Secure Identity Provider</h1>
+          <p class="description">
+               A custom-built OAuth 2.0 and OpenID Connect provider designed for modularity and industry-standard
+               security. Connect your apps seamlessly.
+          </p>
+
+          <div class="cta-group">
+               <a href="/auth/login" class="btn btn-primary">Sign In</a>
+               <a href="/auth/register" class="btn btn-outline">Create Account</a>
+               <a href="/client/register" class="btn btn-outline">Register App</a>
+          </div>
+
+          <div class="features">
+               <div class="feature-card">
+                    <h3>OAuth 2.0</h3>
+                    <p>Support for Authorization Code and Implicit flows.</p>
                </div>
-               <span class="text-xl font-bold tracking-tight text-slate-800">AuthCore <span
-                         class="text-indigo-600">OIDC</span></span>
+               <div class="feature-card">
+                    <h3>OIDC Support</h3>
+                    <p>Standardized identity layer for user verification.</p>
+               </div>
+               <div class="feature-card">
+                    <h3>Secure APIs</h3>
+                    <p>Protected resource endpoints using JWT Bearer tokens.</p>
+               </div>
           </div>
-          <div class="flex items-center space-x-4">
-               <span class="text-sm text-slate-500">Status: <span
-                         class="text-green-500 font-medium">Operational</span></span>
-          </div>
-     </nav>
+     </section>
 
-     <main class="max-w-6xl mx-auto py-16 px-4">
-          <div class="text-center mb-12">
-               <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Identity & Access Management</h1>
-               <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                    Securely manage your user profile, register OAuth2 clients, and monitor your application
-                    integrations from one central hub.
-               </p>
-          </div>
-
-          <!-- Action Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-               <!-- Card 1: Registration -->
-               <a href="/auth/register"
-                    class="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all">
-                    <div
-                         class="bg-indigo-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
-                         <i data-lucide="user-plus"
-                              class="text-indigo-600 group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">User Registration</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Create a new identity account to access protected
-                         resources and services.</p>
-                    <div class="mt-6 flex items-center text-indigo-600 font-semibold text-sm">
-                         Get Started <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                    </div>
-               </a>
-
-               <!-- Card 2: Login -->
-               <a href="/auth/login"
-                    class="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all">
-                    <div
-                         class="bg-blue-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                         <i data-lucide="log-in" class="text-blue-600 group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Account Login</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Securely sign in to your existing account using
-                         your credentials.</p>
-                    <div class="mt-6 flex items-center text-blue-600 font-semibold text-sm">
-                         Authenticate <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                    </div>
-               </a>
-
-               <!-- Card 3: Client Registration -->
-               <a href="/client/register"
-                    class="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all">
-                    <div
-                         class="bg-slate-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-slate-800 transition-colors">
-                         <i data-lucide="code-2" class="text-slate-700 group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Developer Portal</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Register OAuth2/OIDC clients and manage redirect
-                         URIs for your apps.</p>
-                    <div class="mt-6 flex items-center text-slate-800 font-semibold text-sm">
-                         Manage Clients <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                    </div>
-               </a>
-
-          </div>
-
-          <footer class="mt-20 text-center text-slate-400 text-sm">
-               <p>&copy; 2026 AuthCore Identity Provider. Built for secure-first developers.</p>
-          </footer>
-     </main>
-
-     <script>
-          // Initialize Lucide icons
-          lucide.createIcons();
-     </script>
 </body>
 
 </html>

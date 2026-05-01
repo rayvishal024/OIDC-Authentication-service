@@ -4,24 +4,27 @@ import rateLimit from "express-rate-limit";
 import cors from 'cors'
 import helmet from "helmet";
 
-import path from "path";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { env } from "./config/env";
 import authRoutes from "./routes/auth.routes";
 import clientRoutes from "./routes/client.routes";
 import oauthRoutes from "./routes/oauth.routes";
 
-
 function main() {
      const app = express();
 
-     // ejs setup
-     app.set("view engine", "ejs");
-     app.set("views", path.join(__dirname, "views"));
+     app.use(express.static(path.join(__dirname, 'public')));
 
+     // ejs setup
+     app.set('view engine', 'ejs');
+     app.set('views', path.join(__dirname, 'views'));
+     app.set("trust proxy", 1);
+     
      // built-in middleware
      app.use(express.json());
      app.use(express.urlencoded({ extended: true }));
-     app.use(express.static(path.join(__dirname, "public")));
+     
 
      // extra middleware
      app.use(cookieParser());

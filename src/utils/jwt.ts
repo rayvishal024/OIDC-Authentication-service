@@ -2,8 +2,15 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env";
 
-const privateKey = fs.readFileSync(env.JWT_PRIVATE_KEY, "utf-8");
-const publicKey = fs.readFileSync(env.JWT_PUBLIC_KEY, "utf-8");
+const privateKey = Buffer.from(
+     env.JWT_PRIVATE_KEY_BASE64,
+     "base64"
+).toString("utf-8");
+
+const publicKey = Buffer.from(
+     env.JWT_PUBLIC_KEY_BASE64,
+     "base64"
+).toString("utf-8");
 
 export const signToken = (payload: object) => {
      return jwt.sign(payload, privateKey, {
