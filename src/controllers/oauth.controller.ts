@@ -7,12 +7,12 @@ export const authorize = async (req: Request, res: Response) => {
            
           // redirect to login
           if ("redirectToLogin" in result) {
-               
                return res.redirect(result.loginUrl!);
           }
           
           // redirect with code
           if ("redirectUrl" in result) {
+               console.log(result.redirectUrl)
                return res.redirect(result.redirectUrl!);
           }
 

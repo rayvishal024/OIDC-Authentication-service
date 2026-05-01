@@ -40,13 +40,13 @@ export const handleAuthorize = async (req: Request) => {
           const fullUrl = `/oauth/authorize?${new URLSearchParams(req.query as any)}`;
           return {
                redirectToLogin: true,
-               loginUrl: `/auth/login?redirect=${encodeURIComponent(fullUrl)}`,
+               loginUrl: `/login?redirect=${encodeURIComponent(fullUrl)}`,
           };
      }
 
      //  Generate code
      const code = crypto.randomBytes(32).toString("hex");
-
+   
      // store code in db
      await db.insert(authorizationCodes).values({
           code,
@@ -59,14 +59,14 @@ export const handleAuthorize = async (req: Request) => {
      //  Redirect back
      const redirectUrl =
           `${redirect_uri}?code=${code}${state ? `&state=${state}` : ""}`;
-      
+     
      return {
           redirectUrl,
      };
 };
 
 const handleAuthCodeFlow = async (data: any) => {
-     const { code, client_id, client_secret, redirect_uri } = data;
+     const { code, client_id, redirect_uri } = data;
 
      // validate client
      const clientRes = await db
@@ -76,9 +76,6 @@ const handleAuthCodeFlow = async (data: any) => {
 
      const client = clientRes[0];
      if (!client) throw new Error("Invalid client");
-     if (client.clientSecret !== client_secret) {
-          throw new Error("Invalid client secret");
-     }
 
      // validate code
      const codeRes = await db
@@ -109,7 +106,7 @@ const handleAuthCodeFlow = async (data: any) => {
 
      const user = userRes[0];
      if (!user) throw new Error("User not found");
-
+     
      // tokens
      const accessToken = signToken({
           userId: user.id,

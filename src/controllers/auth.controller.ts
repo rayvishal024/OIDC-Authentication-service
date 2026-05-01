@@ -1,11 +1,6 @@
 import { Request, Response } from "express";
 import * as authService from "../services/auth.service";
 
-// show register controller
-export const showRegister = (req: Request, res: Response) => {
-     res.render("register");
-};
-
 // register
 export const register = async (req: Request, res: Response) => {
      try {
@@ -14,12 +9,6 @@ export const register = async (req: Request, res: Response) => {
      } catch (error: any) {
           res.status(400).send(error.message);
      }
-};
-
-// show login
-export const showLogin = (req : Request, res : Response) => {
-     const redirect = req.query.redirect || "";
-     res.render("login", { redirect });
 };
 
 // login 
@@ -34,8 +23,10 @@ export const login = async (req: Request, res: Response) => {
                secure: false, 
           });
           
+          
           // redirect 
           const redirect = req.body.redirect;
+          console.log(redirect)
           if (redirect) {
                const decoded = decodeURIComponent(redirect);
                return res.redirect(decoded);

@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from 'cookie-parser'
 import rateLimit from "express-rate-limit";
 import cors from 'cors'
-import helmet from "helmet";
+
 
 import path from 'path';
 import { env } from "./config/env";
@@ -30,10 +30,9 @@ function main() {
           max: 100,
      }))
      app.use(cors({
-          origin: ["http://localhost:3001", "https://rayvishal.dev"],
+          origin: ["http://localhost:3000", "http://localhost:4000", "https://auth.rayvishal.dev", "https://onemillioncheckbox.rayvishal.dev"],
           credentials: true,
      }));
-     app.use(helmet());
 
      // routes register
      app.use("/auth", authRoutes);
@@ -47,6 +46,15 @@ function main() {
 
      app.get('/', (req, res) => {
           res.render("index")
+     })
+
+     app.get('/login', (req, res) => {
+          const redirect = req.query.redirect || "/";
+          res.render("login", { redirect });
+     })
+
+     app.get('/register', (req, res) => {
+          res.render('register')
      })
 
      app.listen(Number(env.PORT), () => {
