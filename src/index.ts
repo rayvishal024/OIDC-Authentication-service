@@ -30,7 +30,7 @@ function main() {
           max: 100,
      }))
      app.use(cors({
-          origin: ["http://localhost:3001", "https://your-frontend.com"],
+          origin: ["http://localhost:3001", "https://rayvishal.dev"],
           credentials: true,
      }));
      app.use(helmet());
