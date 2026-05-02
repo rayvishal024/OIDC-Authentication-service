@@ -24,6 +24,13 @@ export const authorize = async (req: Request, res: Response) => {
 export const token = async (req: Request, res: Response) => {
      try {
           const result = await oauthService.handleToken(req.body);
+
+          // set cookies
+          res.cookie("token", result.access_token, {
+               httpOnly: true,
+               secure: true,
+          });
+          
           res.json(result);
      } catch (err: any) {
           res.status(400).json({ error: err.message });
