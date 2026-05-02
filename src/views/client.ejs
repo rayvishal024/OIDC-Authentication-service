@@ -4,128 +4,114 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Register Client</title>
+     <title>Register Client | Console</title>
      <style>
-          /* Consistent Design System */
           :root {
-               --primary-bg: #f3f4f6;
-               --accent-color: #4f46e5;
-               --accent-hover: #4338ca;
-               --text-dark: #111827;
-               --text-gray: #6b7280;
-               --card-bg: #ffffff;
-               --border: #e5e7eb;
+               --bg: #0f172a;
+               --surface: #1e293b;
+               --primary: #818cf8;
+               --text-main: #f8fafc;
+               --text-dim: #94a3b8;
+               --border: #334155;
           }
 
           body {
-               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-               background-color: var(--primary-bg);
+               font-family: 'Inter', sans-serif;
+               background-color: var(--bg);
+               color: var(--text-main);
                margin: 0;
                display: flex;
                align-items: center;
                justify-content: center;
-               min-height: 100vh;
+               height: 100vh;
           }
 
-          .card {
-               background: var(--card-bg);
+          .dev-card {
+               background: var(--surface);
                padding: 2.5rem;
                border-radius: 12px;
-               box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
                width: 100%;
-               max-width: 400px;
+               max-width: 500px;
                border: 1px solid var(--border);
           }
 
-          h2 {
-               margin-top: 0;
-               color: var(--text-dark);
-               font-size: 1.5rem;
-               text-align: center;
-               margin-bottom: 0.5rem;
+          .header-box {
+               border-bottom: 1px solid var(--border);
+               margin-bottom: 2rem;
+               padding-bottom: 1rem;
           }
 
-          p.subtitle {
-               text-align: center;
-               color: var(--text-gray);
-               font-size: 0.9rem;
-               margin-bottom: 1.5rem;
+          h2 {
+               margin: 0;
+               font-size: 1.25rem;
+          }
+
+          p.sub {
+               color: var(--text-dim);
+               font-size: 0.85rem;
+               margin-top: 0.5rem;
+          }
+
+          label {
+               display: block;
+               margin-bottom: 0.5rem;
+               font-size: 0.85rem;
+               font-weight: 600;
+               color: var(--text-dim);
           }
 
           .form-group {
-               margin-bottom: 1.25rem;
+               margin-bottom: 1.5rem;
           }
 
           input {
                width: 100%;
-               padding: 0.75rem;
+               padding: 10px 14px;
+               background: rgba(15, 23, 42, 0.5);
                border: 1px solid var(--border);
-               border-radius: 8px;
+               border-radius: 6px;
+               color: white;
                box-sizing: border-box;
-               font-size: 1rem;
-               transition: border-color 0.2s, box-shadow 0.2s;
-          }
-
-          input:focus {
-               outline: none;
-               border-color: var(--accent-color);
-               box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
           }
 
           button {
                width: 100%;
-               padding: 0.75rem;
-               background-color: var(--accent-color);
-               color: white;
+               padding: 12px;
+               background: #fff;
+               /* High contrast for dev action */
+               color: #000;
                border: none;
-               border-radius: 8px;
-               font-size: 1rem;
-               font-weight: 600;
+               border-radius: 6px;
+               font-weight: 700;
                cursor: pointer;
-               transition: background-color 0.2s;
-               margin-top: 0.5rem;
+               transition: 0.2s;
           }
 
           button:hover {
-               background-color: var(--accent-hover);
-          }
-
-          .back-link {
-               display: block;
-               text-align: center;
-               margin-top: 1.5rem;
-               font-size: 0.875rem;
-               color: var(--text-gray);
-               text-decoration: none;
-          }
-
-          .back-link:hover {
-               color: var(--accent-color);
+               background: var(--primary);
+               color: white;
           }
      </style>
 </head>
 
 <body>
-
-     <div class="card">
-          <h2>Register Client</h2>
-          <p class="subtitle">Set up a new application client</p>
-
+     <div class="dev-card">
+          <div class="header-box">
+               <h2>New Application Client</h2>
+               <p class="sub">Register your app to begin using OIDC flows.</p>
+          </div>
           <form method="POST" action="/client/register">
                <div class="form-group">
-                    <input name="name" type="text" placeholder="App Name" required />
+                    <label>App Name</label>
+                    <input name="name" placeholder="e.g. My SaaS Platform" required />
                </div>
-
                <div class="form-group">
-                    <input name="redirectUri" type="url" placeholder="Redirect URI (https://...)" required />
+                    <label>Redirect URI</label>
+                    <input name="redirectUri" placeholder="https://myapp.com/callback" required />
                </div>
-
-               <button type="submit">Create Client</button>
+               <button type="submit">Create Client Credentials</button>
           </form>
-
-          <a href="/" class="back-link">← Back to Dashboard</a>
      </div>
-
 </body>
 
 </html>
