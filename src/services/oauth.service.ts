@@ -111,6 +111,7 @@ const handleAuthCodeFlow = async (data: any) => {
      const accessToken = signToken({
           userId: user.id,
           email: user.email,
+          name: user.name,
           clientId: client_id,
      });
 
@@ -161,6 +162,7 @@ const handleRefreshFlow = async (data: any) => {
 
      const accessToken = signToken({
           userId: user.id,
+          name : user.name,
           email: user.email,
           clientId: stored.clientId,
      });
