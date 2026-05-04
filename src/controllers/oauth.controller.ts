@@ -29,8 +29,9 @@ export const token = async (req: Request, res: Response) => {
           res.cookie("token", result.access_token, {
                httpOnly: true,
                secure: true,
+               sameSite: "none"
           });
-          
+
           res.json(result);
      } catch (err: any) {
           res.status(400).json({ error: err.message });
